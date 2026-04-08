@@ -76,3 +76,24 @@ filterSelect.addEventListener("change", applyFilters);
 sortSelect.addEventListener("change", applyFilters);
 
 getMovies();
+
+// 🌙 Dark Mode Toggle
+const toggleBtn = document.getElementById("theme-toggle");
+
+// Load saved theme
+if (localStorage.getItem("theme") === "light") {
+  document.body.classList.add("light");
+  toggleBtn.textContent = "🌞 Light Mode";
+}
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light");
+
+  if (document.body.classList.contains("light")) {
+    localStorage.setItem("theme", "light");
+    toggleBtn.textContent = "🌞 Light Mode";
+  } else {
+    localStorage.setItem("theme", "dark");
+    toggleBtn.textContent = "🌙 Dark Mode";
+  }
+});
